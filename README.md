@@ -41,22 +41,22 @@
 ![image](https://user-images.githubusercontent.com/122459067/221359154-e0d22977-7cc8-4e49-8f1f-0027361f35bd.png)
 
 Доработать скрипт packet_sniff.py, написанный на занятии, чтобы он выводил URL-адреса, которые запрашивал пользователь (для этого можно использовать http.HTTPRequest: /path, Host)
-#!/usr/bin/env python
-import time
-import scapy.all as scapy
-from scapy.layers import http
-
-def sniff(interface):
-    scapy.sniff(iface=interface, store=False, prn=process_sniffed_packet)
-
-def get_url (packet):
-    return packet[http.HTTPRequest].Host + packet[http.HTTPRequest].Path
-
-def process_sniffed_packet(packet):
-    if packet.haslayer(http.HTTPRequest):
-        url = get_url(packet)
-        print("[+] HTTP Request >>" + url.decode())
-
-sniff("eth0")     
+#### #!/usr/bin/env python
+#### import time
+#### import scapy.all as scapy
+#### from scapy.layers import http
+#### 
+#### def sniff(interface):
+####     scapy.sniff(iface=interface, store=False, prn=process_sniffed_packet)
+#### 
+#### def get_url (packet):
+####     return packet[http.HTTPRequest].Host + packet[http.HTTPRequest].Path
+#### 
+#### def process_sniffed_packet(packet):
+####     if packet.haslayer(http.HTTPRequest):
+####         url = get_url(packet)
+####         print("[+] HTTP Request >>" + url.decode())
+#### 
+#### sniff("eth0")     
 ![2023-02-25_16-58-18](https://user-images.githubusercontent.com/122459067/221366961-b797865b-12d6-4d13-94ad-48158b03df11.png)
 ![2023-02-25_17-53-16](https://user-images.githubusercontent.com/122459067/221366977-68ab94be-429b-43bb-8afd-f612a6d3790f.png)
